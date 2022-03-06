@@ -1,0 +1,36 @@
+{
+        "usuario":[
+            {
+                "id": 2,
+                "nome": "Jair Ferraz",
+                "email": "jairferraz@gmail.com",
+                "senha":"2015288"
+            }
+        ],
+        
+        "categoria":[
+            {
+                "id": 1,
+                "nome":"Front-end"
+            }
+        ],
+        
+        "lista":[
+            {
+                "id": 1,
+                "nome":"Criar uma pagina front-end",
+                "categoriaId": 1,
+                "concluida":"false"
+            }
+        ],
+        
+        "tarefa":[
+            {
+                "id":1,
+                "listaId":1,
+                "nome":"Criar uma cabeçalho para pagina principal",
+                "concluida":"true",
+                "usuarioId":"1"
+            }
+        ]
+}
