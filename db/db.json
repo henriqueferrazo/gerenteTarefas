@@ -5,6 +5,18 @@
       "nome": "Jair Ferraz",
       "email": "jairferraz@gmail.com",
       "senha": "2015288"
+    },
+    {
+      "nome": "45",
+      "email": "a@a.com",
+      "senha": "dghdhdghdghhgddghdgh",
+      "id": 3
+    },
+    {
+      "nome": "henrique ",
+      "email": "henrique@henrique.com",
+      "senha": "henrique",
+      "id": 4
     }
   ],
   "categorias": [
