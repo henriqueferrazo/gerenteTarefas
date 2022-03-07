@@ -47,30 +47,23 @@ function RegisterForm() {
 
     return (
         <>
-            <form class="container" onSubmit={handleSubmit(submitData)}>
-                <div class="mb-3 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Nome Completo</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPassword" name="nomeCompleto" {...register("name", { required: true })} />
-                        {errors.name && <span>Campo obrigatorio</span>}
-                    </div>
+            <main class="login" >
+                <div class="login__container">
+                    <h1 class="login__title">Cadastro</h1>
+                    <form class="login__form" onSubmit={handleSubmit(submitData)}>
+                        <input class="login__input" type="text" placeholder="Nome" name="nomeCompleto" {...register("name", { required: true })} />
+                        {errors.nome && <span>Campo Obrigatorio</span>}
+                        
+                        <input class="login__input" type="email" placeholder="e-mail" name="Email" {...register("email", { required: true })} />
+                        {errors.email && <span>Campo Obrigatorio</span>}
+                        
+                        <input class="login__input" type="password" placeholder="senha" name='senha' {...register("password", { required: true })} />
+                        {errors.password && <span>Campo Obrigatorio</span>}
+                        <button class="login__submit">Salvar</button>
+                        <a class="login__reset" href="#">Esqueceu a senha?</a>
+                    </form>
                 </div>
-                <div class="mb-3 row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="staticEmail" name="Email" {...register("email", { required: true })} />
-                        {errors.email && <span>Campo obrigatorio</span>}
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword" name='senha' {...register("password", { required: true })} />
-                        {errors.password && <span>Campo obrigatorio</span>}
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
+            </main>
 
         </>
     );

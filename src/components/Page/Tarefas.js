@@ -44,19 +44,8 @@ function Tarefas() {
 
     return (
         <>
-            <form class="container" className="col-md-5"  onSubmit={handleSubmit(submitData)}>
-                <div>
-                    <label for="inputPassword5" class="form-label">Password</label>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" />
-
-
-                    <label for="inputPassword5" class="form-label">Password</label>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" />
-
-
-                    <label for="inputPassword5" class="form-label">Password</label>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" />
-                </div>
+            <form onSubmit={handleSubmit(submitData)}>
+               input 
             </form>
         </>
     );

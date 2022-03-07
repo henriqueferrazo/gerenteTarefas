@@ -1,4 +1,4 @@
-import './regisForm.css';
+import './FormLogin.css';
 import { useForm } from "react-hook-form";
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -41,21 +41,20 @@ function FormLogin() {
 
     return (
         <>
-            <form class="container" onSubmit={handleSubmit(submitData)}>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value={usuario.email}  {...register("email", { required: true })} />
-                    <label for="floatingInput">Email address</label>
-                    {errors.email && <span>Campo obrigatorio</span>}
+            <main class="login" >
+                <div class="login__container">
+                    <h1 class="login__title">Login</h1>
+                    <form class="login__form" onSubmit={handleSubmit(submitData)}>
+                        <input class="login__input" type="email" placeholder="e-mail" value={usuario.email}  {...register("email", { required: true })} />
+                        {errors.email && <span class="login__input-border"></span>}
+                        
+                        <input class="login__input" type="password" placeholder="senha" value={usuario.senha} {...register("password", { required: true })} />
+                        {errors.password && <span class="login__input-border"></span>}
+                        <button class="login__submit">Login</button>
+                        <a class="login__reset" href="#">Esqueceu a senha?</a>
+                    </form>
                 </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" value={usuario.senha} {...register("password", { required: true })} />
-                    <label for="floatingPassword">Password</label>
-                    {errors.password && <span>Campo obrigatorio</span>}
-                </div>
-                <div class='col-4'>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-            </form >
+            </main>
         </>
     );
 }
