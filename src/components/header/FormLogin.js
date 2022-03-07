@@ -1,41 +1,63 @@
-const FormLogin = () => {
-    // const datesLoginUsuario = {
-    //     email : "",
-    //     senha : ""
-    // }
+import './regisForm.css';
+import { useForm } from "react-hook-form";
+import React from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
-    // let {values, setValue} = useState(datesLoginUsuario);
+const schema = yup.object({
+    email: yup.string().email().required(),
+    password: yup.string().required()
+}).required();
 
-    // const InputHandler = (event) => {
-    //     let {nomeCompleto, value} = event.target
+function FormLogin() {
 
-    //     setValue({
-    //         ... values,
-    //         [nomeCompleto]: value
-    //     })
-    // }
+    const history = useHistory();
+    const [usuario, setUsuario] = useState([])
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+
+    } = useForm({ resolver: yupResolver(schema) });
+
+    function submitData(userData) {
+
+        fetch(`http://localhost:5000/usuario?email=${userData.email}&senha=${userData.senha}`, {
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json"
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+                setUsuario(userData)
+                history.push('/tarefa');
+            })
+            .catch(err => console.log(err));
+    }
+
     return (
-        <form autoComplete="off">
-            <div class="modal-body">
-                <div class="mb-3 row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="staticEmail" name="email" />
-                    </div>
+        <>
+            <form class="container" onSubmit={handleSubmit(submitData)}>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value={usuario.email}  {...register("email", { required: true })} />
+                    <label for="floatingInput">Email address</label>
+                    {errors.email && <span>Campo obrigatorio</span>}
                 </div>
-                <div class="mb-3 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword" name="senha" />
-                    </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" value={usuario.senha} {...register("password", { required: true })} />
+                    <label for="floatingPassword">Password</label>
+                    {errors.password && <span>Campo obrigatorio</span>}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <div class='col-4'>
                     <button type="submit" class="btn btn-primary">Entrar</button>
                 </div>
-            </div>
-        </form>
-    )
+            </form >
+        </>
+    );
 }
 
 export default FormLogin;

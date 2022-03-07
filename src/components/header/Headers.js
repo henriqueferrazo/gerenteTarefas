@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import React from 'react';
-import Modal from './Modal';
 const Headers = () => {
 
     return (
@@ -10,12 +10,11 @@ const Headers = () => {
                     </a>
 
                     <div class="col-md-3 text-end">
-                        <button type="button" data-bs-toggle="modal" class="btn btn-outline-primary me-2" data-bs-target="#ModalEntrar">Entrar</button>
-                        <button type="button" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#ModalCadastrar">Cadastre-se</button>
+                    <Link className="btn btn-outline-primary me-2" to="/login">Entrar</Link>
+                    <Link className="btn btn-outline-primary me-2" to="/register">Cadatrar</Link>
                     </div>
                 </header>
             </div>
-            <Modal/>
         </>
     );
 

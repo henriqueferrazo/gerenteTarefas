@@ -20,8 +20,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "backend": "jason-server --watch db.json --port 5000",
+    "start": "react-scripts start & json-server --watch ./db/db.json --port 5000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
